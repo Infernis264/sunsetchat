@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>the puff</title>
+<style>
+:root {
+	/* TO MAKE PUFF BIGGER MAKE THIS NUMBER BIGGER*/
+	--puff-height: 20vh;
+	/* MAKE PUFF SPIN FASTER BY DECREASING THE NUMBER */
+	--spin-speed: 0.75s;
+	/* MAKE PUFF FLY ACROSS SLOWER BY INCREASING THE TIME, MAKE PUFF FASTER BY DECREASING THE TIME*/
+	--fly-speed: 1s;
+}
+.nromal {
+	animation: spin var(--spin-speed) linear infinite;
+	height: var(--puff-height);
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+.fly-across-screen {
+	position: fixed;
+	left: -20%;
+	width: 140%;
+}
+@keyframes fly {
+	0% {
+		left: 0%;
+	}
+	100% {
+		left: 120%;
+	}
+}
+.fly-across-screen img {
+	position: relative;
+	/* IF YOU DON'T WANT PUFF SPIN DELETE ALL AFTER THE comma AND INCLUDING THE comma, BUT MAKE SURE TO KEEP THE SEMICOLON AT THE END OF THE LINE*/
+	animation: fly var(--fly-speed) linear, spin var(--spin-speed) linear infinite;
+}
+html,body {
+	margin:0;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</head>
+<body>
+<audio class="sound" src="puff.ogg"></audio>
+<script src="./shooting_star.js"></script>
+<script src="./irc-message.js"></script>
+<script src="./reconnecting-websocket.js"></script>
+<script src="./Chat.js"></script>
+</body>
+</html>
